@@ -21,7 +21,6 @@ editor: visual
 library(tidyr)
 library(knitr)
 library(jsonlite)
-library(igraph)
 
 
 ###############################################################################
