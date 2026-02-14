@@ -176,9 +176,7 @@ Using [DL Flag](https://www.opencaesar.io/oml/#UnreifiedRelation-LR), reasoner c
 Change `descrpition1.oml` as follows,
 
 ```oml
-	instance kens-CX-8 : vocabulary1:CX-8 [
-		// vocabulary1:hasEngine kens-SR14-v1
-	]
+	instance ringos-CX-8 : vocabulary1:CX-8 
 ```
 
 Then run `./gradlew build`.
@@ -199,8 +197,14 @@ This error says `Car` must have more than one `Engine`.
 Change `descrpition1.oml` as follows,
 
 ```oml
-	instance kens-CX-8 : vocabulary1:CX-8 [
-		vocabulary1:hasEngine  kens-CX-8-kaizo
+	instance ringos-CX-8 : vocabulary1:CX-8 [
+		vocabulary1:hasEngine  ringos-SR14-v1
+	]
+	instance ringos-SR14-v1 : vocabulary1:SR14[
+		vocabulary1:hasDisplacement displacement-ringos-v1
+	]
+	instance displacement-ringos-v1 : vocabulary1:Displacement [
+		vim4:hasDoubleNumber "2000"^^xsd:double
 	]
 ```
 

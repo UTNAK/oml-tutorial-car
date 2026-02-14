@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>readme</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="README_files/libs/clipboard/clipboard.min.js"></script>
+<script src="README_files/libs/quarto-html/quarto.js"></script>
+<script src="README_files/libs/quarto-html/popper.min.js"></script>
+<script src="README_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="README_files/libs/quarto-html/anchor.min.js"></script>
+<link href="README_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="README_files/libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="README_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="README_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="README_files/libs/bootstrap/bootstrap-973236bd072d72a04ee9cd82dcc9cb29.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+
+<section id="oml-template" class="level1">
+<h1>OML Template</h1>
+<p><a href="https://github.com/opencaesar/oml-template/actions/workflows/ci.yml"><img src="https://github.com/opencaesar/oml-template/actions/workflows/ci.yml/badge.svg" class="img-fluid" alt="Build Status"></a> <a href="https://github.com/opencaesar/oml-template/releases/latest"><img src="https://img.shields.io/github/v/release/opencaesar/oml-template?label=Release.png" class="img-fluid" alt="Release"></a> <a href="https://www.opencaesar.io/oml-template/"><img src="https://img.shields.io/badge/Documentation-HTML-orange.png" class="img-fluid" alt="Documentation"></a></p>
+<p>This repository has a template <a href="https://github.com/opencaesar/oml">OML</a> project. It is meant to be forked as a starting point by pressing the ‘Use this template’ button above.</p>
+<blockquote class="blockquote">
+<p>this template is suitable for use with OML Rosetta and OML Luxor (but not OML Vision)</p>
+</blockquote>
+<section id="clone" class="level2">
+<h2 class="anchored" data-anchor-id="clone">Clone</h2>
+<pre><code>  git clone https://github.com/UTNAK/oml-imce-vocabulary.git
+  cd oml-imce-vocabulary</code></pre>
+</section>
+<section id="build" class="level2">
+<h2 class="anchored" data-anchor-id="build">Build</h2>
+<p>Check the consistency of the dataset</p>
+<pre><code>./gradlew build</code></pre>
+</section>
+<section id="generate-docs" class="level2">
+<h2 class="anchored" data-anchor-id="generate-docs">Generate Docs</h2>
+<p>Generate documentation from dataset</p>
+<pre><code>./gradlew generateDocs</code></pre>
+</section>
+<section id="start-fuseki-server" class="level2">
+<h2 class="anchored" data-anchor-id="start-fuseki-server">Start Fuseki Server</h2>
+<p>Start the Fuseki triple store</p>
+<pre><code>./gradlew startFuseki</code></pre>
+<p>Navigate to http://localhost:3030</p>
+<p>Verify you see a dataset: <code>template</code></p>
+</section>
+<section id="stop-fuseki-server" class="level2">
+<h2 class="anchored" data-anchor-id="stop-fuseki-server">Stop Fuseki Server</h2>
+<p>Stop the Fuseki triple store</p>
+<pre><code>./gradlew stopFuseki</code></pre>
+</section>
+<section id="load-dataset-to-fuseki" class="level2">
+<h2 class="anchored" data-anchor-id="load-dataset-to-fuseki">Load Dataset to Fuseki</h2>
+<p>Load the dataset to Fuseki server</p>
+<pre><code>./gradlew load</code></pre>
+<p>Navigate to http://localhost:3030/#/dataset/template/info</p>
+<p>Click on <code>count triples in all graphs</code> and observe the triple counts</p>
+</section>
+<section id="run-sparql-queries" class="level2">
+<h2 class="anchored" data-anchor-id="run-sparql-queries">Run SPARQL Queries</h2>
+<p>Run the SPARQL queries</p>
+<pre><code>./gradlew query</code></pre>
+<p>Inspect the results at <code>build/results/template</code></p>
+</section>
+<section id="run-shacl-rules" class="level2">
+<h2 class="anchored" data-anchor-id="run-shacl-rules">Run SHACL Rules</h2>
+<p>Run the SHACL rules</p>
+<pre><code>./gradlew validate</code></pre>
+<p>Inspect the results at <code>build/logs/template</code></p>
+</section>
+<section id="publish-to-maven-local" class="level2">
+<h2 class="anchored" data-anchor-id="publish-to-maven-local">Publish to Maven Local</h2>
+<p>Publish the OML dataset as an archive in the local maven repo</p>
+<pre><code>./gradlew publishToMavenLocal</code></pre>
+<p>Inspect the OML archive</p>
+<pre><code>ls ~/.m2/repository/io/opencaesar/oml-template</code></pre>
+</section>
+<section id="customize-template" class="level2">
+<h2 class="anchored" data-anchor-id="customize-template">Customize Template</h2>
+<p>The name of this project is <code>oml-template</code>. You can change it to your own project name. The easiest way to do this is to look for the word <code>template</code> in this repo and replace it. The files that need to be changes include:</p>
+<ul>
+<li><code>.project</code> (name)</li>
+<li><code>.catalog.xml</code> (first rewriteURI)</li>
+<li><code>README.md</code> (various places)</li>
+<li><code>.oml/fuseki.ttl</code> (fuseki:name)</li>
+<li><code>.oml/oml.yml</code> (various places)</li>
+<li><code>src/oml/*</code> (namespaces of ontologies)</li>
+<li><code>src/sparcl/*</code> (namespaces of ontologies)</li>
+<li><code>src/shacl/*</code> (namespaces of ontologies)</li>
+</ul>
+</section>
+</section>
+<section id="experiment-1-query-and-visualize-using-quarto-notebook" class="level1">
+<h1>Experiment #1 : Query and Visualize using Quarto Notebook</h1>
+<ol type="1">
+<li><code>R --version</code></li>
+<li><code>quarto -V</code></li>
+<li><code>./gradlew build</code></li>
+<li><code>./gradlew load</code></li>
+<li><code>./gradlew query</code></li>
+<li>Then you can find a file of <code>build/results/template/objective.json</code></li>
+<li>Open <code>/oml-car-variants/script/objective_report.qmd</code></li>
+<li>`quarto render script/objective_report.qmd</li>
+<li>Then you will get the <code>script/objective_report.html</code></li>
+<li>Open in browser</li>
+</ol>
+</section>
+<section id="experiment-2" class="level1">
+<h1>Experiment #2</h1>
+<section id="query-1-get-all-the-car" class="level2">
+<h2 class="anchored" data-anchor-id="query-1-get-all-the-car">Query 1: Get All the Car</h2>
+<pre class="sparql"><code>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX base:        &lt;http://imce.jpl.nasa.gov/foundation/base#&gt;
+PREFIX vocabulary1:        &lt;http://opencaesar.io/template/vocabulary/vocabulary1#&gt;
+PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+PREFIX vim4: &lt;http://bipm.org/jcgm/vim4#&gt;
+
+SELECT DISTINCT*
+WHERE {
+    ?iri a vocabulary1:Car;
+        vocabulary1:hasEngine [
+            vocabulary1:hasDisplacement [
+                vim4:hasDoubleNumber ?displacement
+        ]
+    ]
+}ORDER BY ?iri</code></pre>
+</section>
+<section id="query-2-get-all-the-cx-8" class="level2">
+<h2 class="anchored" data-anchor-id="query-2-get-all-the-cx-8">Query 2: Get All the CX-8</h2>
+<pre class="sparql"><code>PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX base:        &lt;http://imce.jpl.nasa.gov/foundation/base#&gt;
+PREFIX vocabulary1:        &lt;http://opencaesar.io/template/vocabulary/vocabulary1#&gt;
+PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+PREFIX vim4: &lt;http://bipm.org/jcgm/vim4#&gt;
+
+SELECT DISTINCT*
+WHERE {
+    ?iri a vocabulary1:CX-8;
+        vocabulary1:hasEngine [
+            vocabulary1:hasDisplacement [
+                vim4:hasDoubleNumber ?displacement
+        ]
+    ]
+}ORDER BY ?iri</code></pre>
+</section>
+</section>
+<section id="expetiment-3-reasoner-test" class="level1">
+<h1>Expetiment #3 Reasoner Test</h1>
+<p>Using <a href="https://www.opencaesar.io/oml/#UnreifiedRelation-LR">DL Flag</a>, reasoner can detect model inconsistencies.</p>
+<section id="semantic-validation-1-car-without-engine" class="level2">
+<h2 class="anchored" data-anchor-id="semantic-validation-1-car-without-engine">Semantic Validation #1 : Car without Engine</h2>
+<p>エンジンをもたない車のインスタンスを定義</p>
+<p>Change <code>descrpition1.oml</code> as follows,</p>
+<pre class="oml"><code>    instance kens-CX-8 : vocabulary1:CX-8 [
+        // vocabulary1:hasEngine kens-SR14-v1
+    ]</code></pre>
+<p>Then run <code>./gradlew build</code>.</p>
+<p>You may get a response like this,</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/image.png" class="img-fluid figure-img"></p>
+<figcaption>alt text</figcaption>
+</figure>
+</div>
+<p>Open <code>/oml-car-variants/build/logs/template/reasoning.xml</code>. You can find the error of <code>Individual violates minimum cardinality restriction</code>.</p>
+<p>This error says <code>Car</code> must have more than one <code>Engine</code>.</p>
+</section>
+<section id="semantic-validation-2-hasengineにcarを指定" class="level2">
+<h2 class="anchored" data-anchor-id="semantic-validation-2-hasengineにcarを指定">Semantic Validation #2 hasEngineにCarを指定</h2>
+<p>正しくはEngineを指定する必要がある</p>
+<p>Change <code>descrpition1.oml</code> as follows,</p>
+<pre class="oml"><code>    instance kens-CX-8 : vocabulary1:CX-8 [
+        vocabulary1:hasEngine  kens-CX-8-kaizo
+    ]</code></pre>
+<p>エディタに埋め込まれたSyntaxエラー検知機能を使って、オントロジーの使い方の間違いを指摘してくれる。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="image/README/1750488602204.png" class="img-fluid figure-img"></p>
+<figcaption>1750488602204</figcaption>
+</figure>
+</div>
+</section>
+<section id="semantic-validation-3-cx-9に異なる型式のエンジンを指定するとエラーとして検知してくれる" class="level2">
+<h2 class="anchored" data-anchor-id="semantic-validation-3-cx-9に異なる型式のエンジンを指定するとエラーとして検知してくれる">Semantic Validation #3 CX-9に異なる型式のエンジンを指定するとエラーとして検知してくれる。</h2>
+<p>ここでは、CX-9に、LE9というSR14とはことなるエンジンを指定する。</p>
+<p>Change <code>descrpition1.oml</code> as follows,</p>
+<pre class="oml"><code>    instance rocket-le-9 : vocabulary1:LE9 [
+        vocabulary1:hasDisplacement displacement-le-9
+    ]</code></pre>
+<p>Then run <code>./gradlew build</code>.</p>
+<p>You may get an error response.</p>
+<p>Open <code>/oml-car-variants/build/logs/template/reasoning.xml</code>. You can find the error of <code>An individual belongs to a type and its complement</code>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="image/README/1750488933716.png" class="img-fluid figure-img"></p>
+<figcaption>1750488933716</figcaption>
+</figure>
+</div>
+</section>
+<section id="semantic-validation-4-ノード間の関係性エッジに制約を与える" class="level2">
+<h2 class="anchored" data-anchor-id="semantic-validation-4-ノード間の関係性エッジに制約を与える">Semantic Validation #4 : ノード間の関係性（エッジ）に制約を与える</h2>
+<p>複数の子をもってはいけない</p>
+<p>Change <code>descrpition1.oml</code> as follows,</p>
+<pre class="oml"><code>    instance kens-CX-8 : vocabulary1:CX-8 [
+        vocabulary1:hasEngine kens-SR14-v1
+    ]
+
+    instance bobs-CX-9 : vocabulary1:CX-9 [
+        vocabulary1:hasEngine kens-SR14-v1
+    ]</code></pre>
+<p>Then run <code>./gradlew build</code>.</p>
+<p>You may get a response like this,</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="image/README/1750484251853.png" class="img-fluid figure-img"></p>
+<figcaption>1750484251853</figcaption>
+</figure>
+</div>
+<p>Open <code>/oml-car-variants/build/logs/template/reasoning.xml</code>. You can find the error of <code>An individual contains a minCardinality restriction that is greater than a maxCardinality restriction</code>.</p>
+<p>This error says the same <code>Engine</code> cannot become <code>isEngineOf</code> in more than one <code>Car</code>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="image/README/1750484404481.png" class="img-fluid figure-img"></p>
+<figcaption>1750484404481</figcaption>
+</figure>
+</div>
+<p>As Dr.&nbsp;Maged Elaasar mentions <a href="https://bentleyjoakes.github.io/assets/publications/Elaasar2023%20-%20openCAESAR%20Balancing%20Agility%20and%20Rigor%20in%20Model-Based%20Systems%20Engineering.pdf">here</a>, in openCAESAR, analysis happens at two levels. First, the logical consistency of the models is checked using OML and description logic reasoners. Second, other analyses investigate other properties of the system. OML models can easily be checked for logical consistency with an off-the-shelf description logic (DL) reasoner. This check is typically done very early in an analysis pipeline as in the Kepler16b example CI pipeline. Completeness checks can be encoded in a vocabulary directly using minimum/exact cardinality restrictions on properties. They can also be captured using libraries of well-formedness rules that query consistent models. The advantage of the latter is the ability to separate those two concerns, and the ability to use other analyses frameworks than a DL reasoner.</p>
+</section>
+<section id="operational-design-domain-odd" class="level2">
+<h2 class="anchored" data-anchor-id="operational-design-domain-odd">operational design domain (ODD)</h2>
+<p><a href="https://www.nhtsa.gov/sites/nhtsa.gov/files/documents/13882-automateddrivingsystems_092618_v1a_tag.pdf">A Framework for Automated Driving System Testable Cases and Scenarios</a></p>
+<section id="vocabulary" class="level3">
+<h3 class="anchored" data-anchor-id="vocabulary">Vocabulary</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="image/README/1751697933110.png" class="img-fluid figure-img"></p>
+<figcaption>1751697933110</figcaption>
+</figure>
+</div>
+</section>
+<section id="descriptions" class="level3">
+<h3 class="anchored" data-anchor-id="descriptions">Descriptions</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="image/README/1751698134350.png" class="img-fluid figure-img"></p>
+<figcaption>1751698134350</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="scene-and-query" class="level2">
+<h2 class="anchored" data-anchor-id="scene-and-query">Scene and Query</h2>
+<pre class="sparql"><code>PREFIX analysis:    &lt;http://imce.jpl.nasa.gov/foundation/analysis#&gt;
+PREFIX constraint:  &lt;http://opencaesar.io/firesat-telecom/telecom-supplier/vocabulary/constraint#&gt;
+PREFIX rdfs:        &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX odd: &lt;http://opencaesar.io/template/vocabulary/ADSdomain#&gt;
+
+SELECT DISTINCT ?odd ?oe ?iri
+
+WHERE {
+#  &lt;http://opencaesar.io/template/description/scene/scene02#odd-2&gt; a odd:JASPARODD;
+  VALUES ?oe { odd:Physicalinfrastructure odd:EnverionmentalCondition odd:TrafficParticipants}
+  VALUES ?relation { odd:isPIOf odd:isECOf odd:IsTPOf}
+  ?iri a ?oe;
+     ?relation &lt;http://opencaesar.io/template/description/scene/scene01#odd-01&gt;
+
+}ORDER BY ?odd ?oe</code></pre>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

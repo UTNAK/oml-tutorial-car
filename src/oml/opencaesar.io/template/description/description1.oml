@@ -15,38 +15,35 @@ description <http://opencaesar.io/template/description/description1#> as descrip
 
 	uses <http://www.w3.org/2001/XMLSchema#> as xsd
 
-	instance kens-CX-8 : vocabulary1:CX-8 [
-		vocabulary1:hasEngine kens-SR14-v1
+	instance johns-CX-8 : vocabulary1:CX-8 [
+		vocabulary1:hasEngine johns-SR14-v1
 	]
 
 
 
 	instance bobs-CX-9 : vocabulary1:CX-9 [
-		vocabulary1:hasEngine kens-SR14-v2
+		vocabulary1:hasEngine johns-SR14-v2
 	]
 
-
-
-
-	instance kens-CX-8-kaizo : vocabulary1:CX-8 [
-		vocabulary1:hasEngine kens-SR14-v2_kaizo
+	instance johns-CX-8-kaizo : vocabulary1:CX-8 [
+		vocabulary1:hasEngine johns-SR14-v2_kaizo
 	]
 
-	instance kens-SR14-v2 : vocabulary1:SR14 [
+	instance johns-SR14-v2 : vocabulary1:SR14 [
 		vocabulary1:hasDisplacement displacement-v2
 	]
 
-	instance kens-SR14-v2_kaizo : vocabulary1:SR14 [
+	instance johns-SR14-v2_kaizo : vocabulary1:SR14 [
 		vocabulary1:hasDisplacement displacement-v2_kaizo
 	]
 
-	instance kens-SR14-v1 : vocabulary1:SR14[
+	instance johns-SR14-v1 : vocabulary1:SR14[
 		vocabulary1:hasDisplacement displacement-v1
 	]
 	// IF we put the other type of engine, 
 	// we assume reasoner tell us the engine type is mismatched.
 	instance rocket-CX-9 : vocabulary1:CX-9 [
-		// vocabulary1:hasEngine kens-SR14-v2
+		// vocabulary1:hasEngine johns-SR14-v2
 		vocabulary1:hasEngine rocket-le-9
 	]
 	instance rocket-le-9 : vocabulary1:SR14 [
@@ -79,4 +76,15 @@ description <http://opencaesar.io/template/description/description1#> as descrip
 		base:hasDescription "The maximum Displacement of the engine shall not exceed 2100cc."
 		vocabulary1:maxDisplacement "3000.0"^^xsd:double
 	]
+
+	instance ringos-CX-8 : vocabulary1:CX-8 [
+		vocabulary1:hasEngine  ringos-SR14-v1
+	]
+	instance ringos-SR14-v1 : vocabulary1:SR14[
+		vocabulary1:hasDisplacement displacement-ringos-v1
+	]
+	instance displacement-ringos-v1 : vocabulary1:Displacement [
+		vim4:hasDoubleNumber "2000"^^xsd:double
+	]
+
 }
