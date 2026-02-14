@@ -17,12 +17,12 @@ editor: visual
 #| message: false
 #| include: true
 #| 
-suppressPackageStartupMessages({
-  library(tidyverse)
-  library(knitr)
-  library(jsonlite)
-  library(igraph)
-})
+
+library(tidyr)
+library(knitr)
+library(jsonlite)
+library(igraph)
+
 
 ###############################################################################
 #' readQueryResultsFromJson
