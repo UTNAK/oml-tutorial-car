@@ -18,7 +18,7 @@ jobs:
       - name: Build Load
         run: ./gradlew load
       - name: Run Scripts
-        run: quarto render script/analysis_matrix.qmd --output-dir ../public_html/omlanalysis
+        run: quarto render script/script/car_report.qmd --output-dir ../public_html/omlanalysis
       - name: Check Results
         run: ls public_html
       - name: Publish Docs
