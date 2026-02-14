@@ -15,8 +15,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Build Load
-        run: ./gradlew load
+      - name: Build Load Query
+        run: ./gradlew query
+      # - name: Build Load
+      #   run: ./gradlew load
       - name: Run Scripts
         run: quarto render script/script/car_report.qmd --output-dir ../public_html/omlanalysis
       - name: Check Results
