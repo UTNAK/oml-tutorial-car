@@ -19,6 +19,8 @@ jobs:
         run: ./gradlew query
       # - name: Build Load
       #   run: ./gradlew load
+      - name: Check
+        run: R --version
       - name: Run Scripts
         run: quarto render script/car_report.qmd --output-dir ../public_html/omlanalysis
       - name: Check Results
