@@ -19,6 +19,7 @@ editor: visual
 #| 
 
 library(tidyr)
+library(dplyr)
 library(knitr)
 library(jsonlite)
 
