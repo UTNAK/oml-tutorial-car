@@ -1,0 +1,17 @@
+PREFIX analysis:	<http://imce.jpl.nasa.gov/foundation/analysis#>
+PREFIX constraint:	<http://opencaesar.io/firesat-telecom/telecom-supplier/vocabulary/constraint#>
+PREFIX rdfs:		<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX odd:	<http://opencaesar.io/template/vocabulary/ADSdomain#>
+
+SELECT DISTINCT ?odd ?oe ?iri
+
+WHERE {
+#  <http://opencaesar.io/template/description/scene/scene02#odd-2> a odd:JASPARODD;
+  VALUES ?odd {<http://opencaesar.io/template/description/scene/scene01#odd-01>}
+#  ?odd a odd:JASPARODD;
+  VALUES ?oe { odd:Physicalinfrastructure odd:EnverionmentalCondition odd:TrafficParticipants}
+  VALUES ?relation { odd:isPIOf odd:isECOf odd:IsTPOf}
+  ?iri a ?oe;
+     ?relation ?odd
+
+}ORDER BY ?odd ?oe

@@ -1,0 +1,23 @@
+PREFIX base:        <http://imce.jpl.nasa.gov/foundation/base#>
+PREFIX mission:     <http://imce.jpl.nasa.gov/foundation/mission#>
+
+SELECT DISTINCT ?iri ?id ?name ?child_id ?child_name ?childiri ?type
+WHERE {
+    VALUES ?componentType { mission:Objective }
+    VALUES ?relationType { base:aggregates}
+
+    # VALUES ?componentType { mission:Mission}
+    # VALUES ?relationType { mission:pursues}
+
+	?iri a ?componentType ;
+		base:hasIdentifier ?id ;
+		base:hasCanonicalName ?name ;
+  		?relationType ?childiri.
+			OPTIONAL{
+				?childiri base:hasCanonicalName ?child_name ;
+					  base:hasIdentifier ?child_id ;
+			}
+  		  BIND(STRAFTER(STR(?relationType), "#") AS ?type) .
+
+}
+ORDER BY ?id ?child_id

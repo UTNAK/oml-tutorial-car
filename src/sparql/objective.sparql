@@ -1,0 +1,18 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX base:        <http://imce.jpl.nasa.gov/foundation/base#>
+PREFIX mission:        <http://imce.jpl.nasa.gov/foundation/mission#>
+
+SELECT DISTINCT*# ?iri ?id ?name ?miri
+WHERE {
+  ?iri a mission:Objective;
+    base:hasIdentifier ?id;
+    base:hasCanonicalName ?name.
+  OPTIONAL{
+    ?iri mission:isPursuedBy ?miri. 
+
+    OPTIONAL{
+      ?miri base:hasIdentifier ?mid ;
+            base:hasCanonicalName ?mname ;
+  	}
+  }
+}ORDER BY ?id

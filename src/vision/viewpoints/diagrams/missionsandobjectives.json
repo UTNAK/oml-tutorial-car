@@ -1,0 +1,29 @@
+{
+"missionsandobjectives": {
+  "name": "missionsandobjectives",
+  "queries": {
+    "node": "missions.sparql",
+    "edge": "missions_edges.sparql"
+  },
+  "rowMapping": {
+    "id": "node",
+    "name": "Parent",
+    "labelFormat": "{id} {name}",
+    "nodeColor": "Green",
+    "nodeTextColor": "white",
+    "nodeType": "{type}",
+    "edgeMatchKey": "iri"
+  },
+  "edges": [
+    {
+      "id": "edge",
+      "name": "Edge",
+      "animated": true,
+      "labelFormat": "Pursues",
+      "legendItems": "Pursues",
+      "sourceKey": "iri",
+      "targetKey": "oiri"
+    }
+  ]
+}
+}

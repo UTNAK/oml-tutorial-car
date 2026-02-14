@@ -1,0 +1,23 @@
+{
+  "missions": {
+    "name": "Missions",
+    "diagrams": {
+      "all-rows": "missions-diagram"
+    },
+    "queries": {
+      "missions": "missions_edges.sparql"
+    },
+    "rowMapping": {
+      "id": "missions",
+      "name": "Missions",
+      "labelFormat": "{m_id} {m_name}",
+          "subRowMappings": [
+            {
+              "id": "missions",
+              "name": "Objectives",
+              "labelFormat": "{o_id} {o_name}"
+            }
+          ] 
+    }
+  }
+}

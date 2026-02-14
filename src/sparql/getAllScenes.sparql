@@ -1,0 +1,20 @@
+PREFIX analysis:	<http://imce.jpl.nasa.gov/foundation/analysis#>
+PREFIX constraint:	<http://opencaesar.io/firesat-telecom/telecom-supplier/vocabulary/constraint#>
+PREFIX ad: <http://schemas.talis.com/2005/address/schema#>
+PREFIX analysis:	<http://imce.jpl.nasa.gov/foundation/analysis#>
+PREFIX constraint:	<http://opencaesar.io/firesat-telecom/telecom-supplier/vocabulary/constraint#>
+PREFIX rdfs:		<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ads:	<http://opencaesar.io/template/vocabulary/ADSdomain#>
+PREFIX ec:	<http://opencaesar.io/template/vocabulary/EnverionmentalCondition/EnverionmentalCondition#>
+PREFIX vim4: <http://bipm.org/jcgm/vim4#>
+SELECT DISTINCT* #?odd ?oe ?iri ?cloudiness
+
+WHERE {
+#  <http://opencaesar.io/template/description/scene/scene02#odd-2> a odd:JASPARODD;
+#  VALUES ?odd {<http://opencaesar.io/template/description/scene/scene01#odd-01>}
+  ?param a ads:CarlaParameter;
+  		ads:hasFloatNumber ?value;
+  		vim4:characterizes ?sv.
+  		
+
+}ORDER BY ?sv

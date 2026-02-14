@@ -1,0 +1,82 @@
+@dc:title "Example Description"
+@dc:creator "Example Company"
+@dc:rights "Copyright 2019, by Example Company"
+description <http://opencaesar.io/template/description/description1#> as description1 {
+
+	uses <http://purl.org/dc/elements/1.1/> as dc
+
+	uses <http://opencaesar.io/template/vocabulary/vocabulary1#> as vocabulary1
+
+	// uses <http://imce.jpl.nasa.gov/foundation/mission#> as mission
+
+	uses <http://imce.jpl.nasa.gov/foundation/base#> as base
+
+	uses <http://bipm.org/jcgm/vim4#> as vim4
+
+	uses <http://www.w3.org/2001/XMLSchema#> as xsd
+
+	instance kens-CX-8 : vocabulary1:CX-8 [
+		vocabulary1:hasEngine kens-SR14-v1
+	]
+
+
+
+	instance bobs-CX-9 : vocabulary1:CX-9 [
+		vocabulary1:hasEngine kens-SR14-v2
+	]
+
+
+
+
+	instance kens-CX-8-kaizo : vocabulary1:CX-8 [
+		vocabulary1:hasEngine kens-SR14-v2_kaizo
+	]
+
+	instance kens-SR14-v2 : vocabulary1:SR14 [
+		vocabulary1:hasDisplacement displacement-v2
+	]
+
+	instance kens-SR14-v2_kaizo : vocabulary1:SR14 [
+		vocabulary1:hasDisplacement displacement-v2_kaizo
+	]
+
+	instance kens-SR14-v1 : vocabulary1:SR14[
+		vocabulary1:hasDisplacement displacement-v1
+	]
+	// IF we put the other type of engine, 
+	// we assume reasoner tell us the engine type is mismatched.
+	instance rocket-CX-9 : vocabulary1:CX-9 [
+		// vocabulary1:hasEngine kens-SR14-v2
+		vocabulary1:hasEngine rocket-le-9
+	]
+	instance rocket-le-9 : vocabulary1:SR14 [
+		vocabulary1:hasDisplacement displacement-le-9
+	]
+	// instance rocket-le-9 : vocabulary1:LE9 [
+	// 	vocabulary1:hasDisplacement displacement-le-9
+	// ]
+
+
+	//
+	// Displacement Quantity Values
+	//
+	instance displacement-v1 : vocabulary1:Displacement [
+		vim4:hasDoubleNumber "2000"^^xsd:double
+	]
+
+	instance displacement-v2 : vocabulary1:Displacement [
+		vim4:hasDoubleNumber "2200"^^xsd:double
+	]
+	instance displacement-v2_kaizo : vocabulary1:Displacement [
+		vim4:hasDoubleNumber "2400"^^xsd:double
+	]
+	instance displacement-le-9 : vocabulary1:Displacement [
+		vim4:hasDoubleNumber "99999000"^^xsd:double
+	]
+
+	instance maximum-displacement-constraints : vocabulary1:MaxDisplacementRequirement [
+		base:hasIdentifier "R.01"
+		base:hasDescription "The maximum Displacement of the engine shall not exceed 2100cc."
+		vocabulary1:maxDisplacement "3000.0"^^xsd:double
+	]
+}

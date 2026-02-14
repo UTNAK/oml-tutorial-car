@@ -1,0 +1,19 @@
+PREFIX analysis:  <http://imce.jpl.nasa.gov/foundation/analysis#>
+PREFIX constraint: <http://opencaesar.io/firesat-telecom/telecom-supplier/vocabulary/constraint#>
+PREFIX rdfs:      <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX odd:       <http://opencaesar.io/template/vocabulary/ADSdomain#>
+PREFIX ec:        <http://opencaesar.io/template/vocabulary/EnverionmentalCondition/EnverionmentalCondition#>
+
+SELECT DISTINCT ?odd ?oe ?iri ?weatherPattern ?cloudiness
+WHERE {
+  # 固定场景的 ODD
+  VALUES ?odd { <http://opencaesar.io/template/description/scene/scene02#odd-2> }
+  # 只取环境条件（按你原来的 VALUES 结构）
+  VALUES ?oe { odd:EnverionmentalCondition }
+
+  # 环境条件实例
+  ?iri a ?oe ;
+       odd:isECOf ?odd ;
+       ec:weatherPattern ?weatherPattern ;
+}
+ORDER BY ?odd ?oe

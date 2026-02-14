@@ -1,0 +1,63 @@
+[
+  {
+    "title": "Home",
+    "path": "/",
+    "type": "home"
+  },
+  {
+    "title": "Objectives",
+    "type": "group",
+    "iconUrl": "https://raw.githubusercontent.com/nasa-jpl/stellar/32694a2d2c102426ab42c97089d1cdebe10100bd/icons/checklist_on_page.svg",
+    "children": [
+      {
+        "title": "Objectives",
+        "type": "diagram",
+        "path": "objectives"
+      },
+      {
+        "title": "Missions",
+        "type": "diagram",
+        "path": "missionsandobjectives"
+      }
+    ]
+  },
+  {
+    "title": "Tree",
+    "type": "group",
+    "iconUrl": "https://raw.githubusercontent.com/nasa-jpl/stellar/32694a2d2c102426ab42c97089d1cdebe10100bd/icons/checklist_on_page.svg",
+    "children": [
+      {
+        "title": "Missions",
+        "type": "tree",
+        "path": "missions"
+      },
+      {
+        "title": "Connections",
+        "type": "table",
+        "path": "connections"
+      }
+    ]
+  },
+  {
+    "title": "Template",
+    "type": "group",
+    "iconUrl": "https://raw.githubusercontent.com/nasa-jpl/stellar/32694a2d2c102426ab42c97089d1cdebe10100bd/icons/utility_wrench.svg",
+    "children": [
+      {
+        "title": "Diagram Pattern",
+        "type": "diagram",
+        "path": "diagram_pattern"
+      },
+      {
+        "title": "Table Pattern(TBD)",
+        "type": "table",
+        "path": "connections"
+      },
+      {
+        "title": "Tree Pattern(TBD)",
+        "type": "tree",
+        "path": "connections"
+      }
+    ]
+  }
+]
