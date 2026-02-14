@@ -1,0 +1,15 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX base:        <http://imce.jpl.nasa.gov/foundation/base#>
+PREFIX vocabulary1:        <http://opencaesar.io/template/vocabulary/vocabulary1#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX vim4: <http://bipm.org/jcgm/vim4#>
+
+SELECT DISTINCT*
+WHERE {
+	?iri a vocabulary1:Car;
+  		vocabulary1:hasEngine [
+      		vocabulary1:hasDisplacement [
+        		vim4:hasDoubleNumber ?displacement
+    	]
+	]
+}ORDER BY ?iri

@@ -1,0 +1,43 @@
+name: omlanalysis
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  oml-analysis:
+    if: contains(github.event.head_commit.message, '[omlanalysis]')
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/utnak/oml-dev:latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Load
+        run: ./gradlew load
+      - name: Run Scripts
+        run: quarto render script/analysis_matrix.qmd --output-dir ../public_html/omlanalysis
+      - name: Check Results
+        run: ls public_html
+      - name: Publish Docs
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: public_html
+
+  deploy:
+    if: contains(github.event.head_commit.message, '[omlanalysis]')
+    needs: oml-analysis
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy Spec
+        id: deployment
+        uses: actions/deploy-pages@v4
