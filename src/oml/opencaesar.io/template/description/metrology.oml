@@ -11,4 +11,5 @@ description <http://opencaesar.io/template/description/metrology#> as metrology-
 
 	instance cc : vim4:MeasurementUnit [
 		vim4:id "cc"
-	
+	]
+}
